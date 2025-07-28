@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/cam.png" type="image/x-icon">
+    <title>Sentinela</title>
+</head>
+<body>
+
+<div class="security-system">
+  <header class="system-header">
+    <div class="system-title">
+      <h1><span class="glitch-text">SENTINELA</span></h1>
+      <div class="subtitle">SISTEMA DE VIGILÂNCIA AVANÇADA / STATUS: <span class="status-alert">COMPROMETIDO</span></div>
+    </div>
+    <div class="status-panel">
+      <div class="status-item">
+        <span class="status-label">TEMPO DE ATIVIDADE:</span>
+        <span class="status-value" id="uptime-display">23:14:58</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">TIME:</span>
+        <span class="status-value" id="time-display">00:00:00</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="camera-grid">
+    <div class="camera-feed" id="camera1">
+      <div class="camera-header">
+        <span class="camera-id">CAM_01</span>
+        <span class="camera-status">AO VIVO</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video1"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">ENTRADA PRINCIPAL</div>
+    </div>
+
+    <div class="camera-feed" id="camera2">
+      <div class="camera-header">
+        <span class="camera-id">CAM_02</span>
+        <span class="camera-status">AO VIVO</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video2"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">RECEPÇÃO</div>
+    </div>
+
+    <div class="camera-feed" id="camera3">
+      <div class="camera-header">
+        <span class="camera-id">CAM_03</span>
+        <span class="camera-status offline">OFFLINE</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video3"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">CORREDOR</div>
+    </div>
+
+    <div class="camera-feed" id="camera4">
+      <div class="camera-header">
+        <span class="camera-id">CAM_04</span>
+        <span class="camera-status">AO VIVO</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video4"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">SALA DE SERVIDORES</div>
+    </div>
+
+    <div class="camera-feed" id="camera5">
+      <div class="camera-header">
+        <span class="camera-id">CAM_05</span>
+        <span class="camera-status offline">OFFLINE</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video5"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">ESTACIONAMENTO</div>
+    </div>
+
+    <div class="camera-feed" id="camera6">
+      <div class="camera-header">
+        <span class="camera-id">CAM_06</span>
+        <span class="camera-status">AO VIVO</span>
+      </div>
+      <div class="camera-content">
+        <video muted loop playsinline class="camera-video" id="video6"></video>
+        <div class="scan-line"></div>
+        <div class="noise-overlay"></div>
+        <div class="glitch-overlay"></div>
+        <div class="color-distortion"></div>
+      </div>
+      <div class="camera-footer">SALÃO</div>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <div class="log-terminal">
+      <div class="terminal-header">LOG DO SISTEMA</div>
+      <div class="terminal-content" id="log-content">
+        > SISTEMA DE SEGURANÇA INICIALIZADO<br>
+        > CONECTADO AO SERVIDOR PRINCIPAL<br>
+        > AVISO: TENTATIVAS DE ACESSO NÃO AUTORIZADO DETECTADAS<br>
+        > INTEGRIDADE DO SISTEMA: 68%<br>
+        > APLICANDO PROTOCOLOS DE SEGURANÇA...
+      </div>
+    </div>
+    <div class="controls">
+      <button id="toggle-grid" class="control-btn">VISUALIZAÇÃO DE GRADE</button>
+      <button id="reset-system" class="control-btn">REINICIAR SISTEMA</button>
+      <button id="trigger-glitch" class="control-btn">FALHA DE FORÇA</button>
+      <button id="toggle-filter" class="control-btn">ALTERNAR FILTRO</button>
+    </div>
+  </div>
+</div>
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>
