@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "./video/cam3.mp4",
     "./video/cam4.mp4",
     "./video/cam5.mp4",
-    "https://mattcannon.games/codepen/glitches/cam6.mp4"
+    "./video/cam5.mp4",
   ];
 
   // Current view state and filter state
