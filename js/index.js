@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Check if user prefers reduced motion
+// Verifique se o usuário prefere movimento reduzido
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  // DOM elements
+//elementos DOM
   const timeDisplay = document.getElementById("time-display");
   const uptimeDisplay = document.getElementById("uptime-display");
   const logContent = document.getElementById("log-content");
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoElements = document.querySelectorAll(".camera-video");
   const scanLines = document.querySelectorAll(".scan-line");
 
-  // After uploading videos to CodePen, replace these with your actual asset URLs
+// Depois de enviar os vídeos para o CodePen, substitua-os pelos URLs reais dos seus ativos
   const videoSources = [
     "./video/cam1.mp4", 
     "./video/cam2.mp4",
@@ -27,39 +27,39 @@ document.addEventListener("DOMContentLoaded", () => {
     "./video/cam5.mp4",
   ];
 
-  // Current view state and filter state
-  let gridState = "three-per-row"; // 'three-per-row', 'two-per-row', 'single-column'
+// Estado de exibição atual e estado do filtro
+  let gridState = "three-per-row";// 'três por linha', 'dois por linha', 'coluna única'
   let isColorMode = true;
 
-  // Initialize and setup camera feeds
+// Inicializar e configurar feeds de câmera
   function initializeSystem() {
-    // Set current time
+//Definir hora atual
     updateTime();
     setInterval(updateTime, 1000);
 
-    // Randomize scan line speeds
+// Randomizar velocidades de linha de varredura
     randomizeScanLines();
 
-    // Load videos - use the same video for multiple feeds if fewer than 6 are available
+// Carregar vídeos - usar o mesmo vídeo para vários feeds se menos de 6 estiverem disponíveis
     videoElements.forEach((video, index) => {
-      // Use modulo to cycle through available videos if fewer than 6
+    // Use o módulo para percorrer os vídeos disponíveis se houver menos de 6
       const sourceIndex = index % videoSources.length;
       video.src = videoSources[sourceIndex];
       video.load();
 
-      // Play video when it's ready - except for offline cameras
+      // Reproduza o vídeo quando estiver pronto - exceto para câmeras offline
       video.addEventListener("canplaythrough", () => {
-        // Style offline cameras differently but play all videos
+        // Crie estilos de câmeras offline de forma diferente, mas reproduza todos os vídeos
   if (video.id === "video3" || video.id === "video5") {
-    video.style.opacity = 0.5; // Make the video appear darker
+    video.style.opacity = 0.5; // Faça o vídeo parecer mais escuro
     
-    // Add more static noise to offline cameras
+    // Adicione mais ruído estático às câmeras offline
     const feed = video.closest(".camera-feed");
     const noiseOverlay = feed.querySelector(".noise-overlay");
-    noiseOverlay.style.opacity = 0.15; // More static
+    noiseOverlay.style.opacity = 0.15; // Mais estático
   }
   
-  // Play all videos
+  // Reproduz todos os vídeos
   video.play().catch((error) => {
     console.error("Video playback error:", error);
     logEvent("ERROR: Camera feed " + (index + 1) + " playback failed");
@@ -67,26 +67,26 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Set videos to color mode by default
+    // Definir vídeos para o modo colorido por padrão
     videoElements.forEach((video) => {
       video.classList.add("color-mode");
     });
 
-    // Set button text to match initial state
+    // Define o texto do botão para corresponder ao estado inicial
     toggleFilterBtn.textContent = "BW MODE";
 
-    // Initialize glitch effects
+    // Inicializar efeitos de falha
     if (!prefersReducedMotion) {
       setupGlitchEffects();
     } else {
       setupReducedMotionEffects();
     }
 
-    // Log initialization
+    // Inicialização do log
     logEvent("SISTEMA DE SEGURANÇA INICIALIZADO");
     logEvent("CARREGANDO FEEDS DA CÂMERA...");
 
-    // Simulate system issues
+    // Simular problemas do sistema
     setTimeout(() => {
       logEvent("AVISO: TENTATIVAS DE ACESSO NÃO AUTORIZADO DETECTADAS");
       setTimeout(() => {
@@ -101,23 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  // Randomize scan line speeds and densities
+  // Randomizar velocidades e densidades de linhas de varredura
   function randomizeScanLines() {
     scanLines.forEach((scanLine) => {
-      // Random animation duration between 4 and 12 seconds
+      // Duração de animação aleatória entre 4 e 12 segundos
       const duration = 4 + Math.random() * 8;
       scanLine.style.animationDuration = `${duration}s`;
 
-      // Random line density
+      // Densidade de linha aleatória
       const density = 2 + Math.random() * 6;
       scanLine.style.backgroundSize = `100% ${density}px`;
 
-      // Random delay
+      // atraso aleatório
       scanLine.style.animationDelay = `-${Math.random() * 10}s`;
     });
   }
 
-  // Update time display
+  //Atualiza a exibição do tempo
   function updateTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
   }
 
-  // Log events to terminal
+  // Registrar eventos no terminal
   function logEvent(message) {
     const timestamp = timeDisplay.textContent;
     logContent.innerHTML =
@@ -134,19 +134,19 @@ document.addEventListener("DOMContentLoaded", () => {
     logContent.scrollTop = 0;
   }
 
-  // Setup glitch effects for cameras
+  // Configurar efeitos de falha para câmeras
   function setupGlitchEffects() {
     cameraFeeds.forEach((feed, index) => {
       const glitchOverlay = feed.querySelector(".glitch-overlay");
       const colorDistortion = feed.querySelector(".color-distortion");
       const video = feed.querySelector(".camera-video");
 
-      // Trigger an immediate glitch on startup
+      // Aciona uma falha imediata na inicialização
       setTimeout(() => {
         applyRandomGlitch(feed, video, glitchOverlay, colorDistortion);
-      }, Math.random() * 1000); // Random delay within first second
+      }, Math.random() * 1000); // Atraso aleatório no primeiro segundo
 
-      // Random glitch intervals for each camera - more frequent now
+      // Intervalos de falhas aleatórias para cada câmera - mais frequentes agora
       const minInterval = 2000 + index * 500;
       const maxInterval = 8000 + index * 1000;
 
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
           if (Math.random() < 0.85) {
-            // 85% chance for a glitch - more likely
+            // 85% de chance de uma falha - mais provável
             applyRandomGlitch(feed, video, glitchOverlay, colorDistortion);
           }
           scheduleNextGlitch();
@@ -167,12 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Apply a random glitch effect to a camera
+  // Aplique um efeito de falha aleatória a uma câmera
   function applyRandomGlitch(feed, video, glitchOverlay, colorDistortion) {
-    // Use more intense, modern neon-style glitches
+    // Use glitches mais intensos e modernos no estilo neon
     const glitchDuration = Math.random() * 1000 + 300;
 
-    // Randomly choose 1-3 effects to apply simultaneously
+    // Escolha aleatoriamente de 1 a 3 efeitos para aplicar simultaneamente
     const numEffects = Math.floor(Math.random() * 3) + 1;
     const possibleEffects = [
       "slice",
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     const selectedEffects = [];
 
-    // Select random unique effects
+    // Selecione efeitos únicos aleatórios // Selecione efeitos únicos aleatórios
     while (selectedEffects.length < numEffects) {
       const effect =
         possibleEffects[Math.floor(Math.random() * possibleEffects.length)];
@@ -197,18 +197,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Apply each selected effect
+    // Aplicar cada efeito selecionado
     selectedEffects.forEach((effect) => {
       switch (effect) {
         case "slice":
-          // Create horizontal slice/tear effect with neon highlights
+          // Crie um efeito de corte/rasgo horizontal com destaques neon
           const sliceCount = Math.floor(Math.random() * 5) + 1;
 
           for (let i = 0; i < sliceCount; i++) {
             const sliceHeight = Math.random() * 30 + 5; // 5-35px slice
-            const yPos = Math.random() * 80; // Position anywhere in the top 80%
+            const yPos = Math.random() * 80; // Posicione-se em qualquer lugar entre os 80% melhores
 
-            // Create the slice element
+            // Cria o elemento slice
             const slice = document.createElement("div");
             slice.style.position = "absolute";
             slice.style.left = "0";
@@ -219,12 +219,12 @@ document.addEventListener("DOMContentLoaded", () => {
             slice.style.overflow = "hidden";
             slice.style.zIndex = "5";
 
-            // Create a clone of the video inside the slice, but offset
+            // Cria um clone do vídeo dentro do slice, mas deslocado
             const offsetX = Math.random() * 20 - 10;
             const offsetY = Math.random() * 10 - 5;
             slice.style.transform = `translateX(${offsetX}px)`;
 
-            // Add a neon border for dramatic effect
+            // Adicione uma borda neon para um efeito dramático
             const neonColor = ["#0ff", "#f0f", "#ff0", "#0f0"][
               Math.floor(Math.random() * 4)
             ];
@@ -239,17 +239,17 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "rgb-split":
-          // Extreme RGB color channel separation with motion
+          // Separação extrema de canais de cores RGB com movimento
           const rgbAmount = Math.random() * 20 + 10; // 10-30px split
 
-          // Create dramatic RGB shadows with animation
+          // Crie sombras RGB dramáticas com animação
           video.style.boxShadow = `
             ${rgbAmount}px 0 0 rgba(255, 0, 0, 0.8), 
             ${-rgbAmount}px 0 0 rgba(0, 255, 255, 0.8), 
             0 ${rgbAmount / 2}px 0 rgba(0, 255, 0, 0.8)
           `;
 
-          // Animate the RGB split
+          // Animar a divisão RGB
           video.style.animation = `rgb-shift ${glitchDuration / 1000}s linear`;
 
           setTimeout(() => {
@@ -259,10 +259,10 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "pixel":
-          // Pixelation/Mosaic effect with neon edges
+          // Efeito de pixelização/mosaico com bordas neon
           video.style.filter = `blur(1px) contrast(1.5)`;
 
-          // Add a pixelation overlay
+          // Adicione uma sobreposição de pixelização
           const pixelOverlay = document.createElement("div");
           pixelOverlay.style.position = "absolute";
           pixelOverlay.style.top = "0";
@@ -284,8 +284,8 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "flicker":
-          // Rapid strobing/flickering effect with color shifts
-          const flickerCount = Math.floor(Math.random() * 10) + 5; // 5-15 flickers
+          // Efeito estroboscópico/cintilante rápido com mudanças de cor
+          const flickerCount = Math.floor(Math.random() * 10) + 5; // 5-15 piscadas
           const flickerColors = [
             "rgba(255,0,255,0.5)",
             "rgba(0,255,255,0.5)",
@@ -295,15 +295,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
           for (let i = 0; i < flickerCount; i++) {
             setTimeout(() => {
-              // Random opacity flicker
+              // Cintilação aleatória de opacidade
               feed.style.opacity = Math.random() * 0.6 + 0.4;
 
-              // Random position jitter
+              // Jitter de posição aleatória
               const jitterX = Math.random() * 10 - 5;
               const jitterY = Math.random() * 10 - 5;
               video.style.transform = `translate(${jitterX}px, ${jitterY}px)`;
 
-              // Random color overlay
+              // Sobreposição de cores aleatórias
               if (Math.random() < 0.5) {
                 colorDistortion.style.backgroundColor =
                   flickerColors[
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 colorDistortion.style.opacity = 0;
               }
 
-              // Last flicker, reset everything
+              // Último piscar, reinicie tudo
               if (i === flickerCount - 1) {
                 feed.style.opacity = 1;
                 video.style.transform = "none";
@@ -325,16 +325,16 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "neon":
-          // Neon glow/edge effect with oversaturation
+          // Brilho neon/efeito de borda com supersaturação
           video.style.filter = `saturate(300%) brightness(1.2) contrast(1.5)`;
 
-          // Add neon border
+          //Adiciona borda neon
           feed.querySelector(".camera-content").style.boxShadow = `
             inset 0 0 20px rgba(0, 255, 255, 0.8),
             0 0 10px rgba(255, 0, 255, 0.8)
           `;
 
-          // Add a subtle pulse animation
+          // Adicione uma animação de pulso sutil
           feed.querySelector(".camera-content").style.animation =
             "neon-pulse 0.5s alternate infinite";
 
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "distort":
-          // Extreme warping/distortion
+          // Deformação/distorção extrema
           const skewX = Math.random() * 40 - 20;
           const skewY = Math.random() * 40 - 20;
           const rotate = Math.random() * 10 - 5;
@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           video.style.transform = `skew(${skewX}deg, ${skewY}deg) rotate(${rotate}deg) scale(${scale})`;
 
-          // Add pulsing effect
+          // Adicionar efeito pulsante
           setTimeout(() => {
             video.style.transform = `skew(${-skewX / 2}deg, ${
               -skewY / 2
@@ -367,13 +367,13 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "invert":
-          // Color inversion with flashing
+          // Inversão de cores com flashing
           video.style.filter = `invert(100%) hue-rotate(180deg)`;
 
           setTimeout(() => {
             video.style.filter = "";
 
-            // Brief flash
+            // Breve flash
             setTimeout(() => {
               video.style.filter = `invert(100%) hue-rotate(90deg)`;
 
@@ -385,12 +385,12 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "vhs":
-          // VHS tracking issues with scan lines
+          // Problemas de rastreamento de VHS com linhas de digitalização
           const scanLine = feed.querySelector(".scan-line");
           scanLine.style.opacity = 0.8;
           scanLine.style.backgroundSize = "100% 4px";
 
-          // Add horizontal tracking lines
+          // Adicionar linhas de rastreamento horizontais
           for (let i = 0; i < 3; i++) {
             const trackingLine = document.createElement("div");
             trackingLine.style.position = "absolute";
@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             feed.querySelector(".camera-content").appendChild(trackingLine);
 
-            // Animate the tracking line
+            // Animar a linha de rastreamento
             setTimeout(() => {
               trackingLine.style.transform = `translateY(${
                 Math.random() * 50 - 25
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, Math.random() * 300);
           }
 
-          // Horizontal shift
+          //Deslocamento horizontal
           video.style.transform = `translateX(${Math.random() * 30 - 15}px)`;
 
           setTimeout(() => {
@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "matrix":
-          // Matrix-style digital rain effect
+          // Efeito de chuva digital estilo Matrix
           const matrixOverlay = document.createElement("div");
           matrixOverlay.style.position = "absolute";
           matrixOverlay.style.top = "0";
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
           matrixOverlay.style.overflow = "hidden";
           matrixOverlay.style.mixBlendMode = "screen";
 
-          // Generate random matrix characters
+          // Gerar caracteres de matriz aleatórios
           let matrixHtml = "";
           for (let i = 0; i < 20; i++) {
             const chars =
@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           feed.querySelector(".camera-content").appendChild(matrixOverlay);
 
-          // Add digital glitch filter
+          // Adicionar filtro de falha digital
           video.style.filter = "brightness(1.2) contrast(1.5) saturate(0.7)";
 
           setTimeout(() => {
@@ -467,11 +467,11 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
 
         case "xray":
-          // X-ray/negative effect with dramatic edge detection
+          // Raio X/efeito negativo com detecção de bordas dramática
           video.style.filter =
             "invert(85%) contrast(2) brightness(1.5) saturate(0.2)";
 
-          // Add scan effect
+          //Adiciona efeito de varredura
           const scanOverlay = document.createElement("div");
           scanOverlay.style.position = "absolute";
           scanOverlay.style.top = "0";
@@ -495,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Log camera glitch with dramatic error messages
+    // Falha na câmera de registro com mensagens de erro dramáticas
     if (Math.random() < 0.6) {
       const cameraId = feed.querySelector(".camera-id").textContent;
       const glitchMessages = [
@@ -516,43 +516,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Setup reduced motion alternative effects
+  // Configurar efeitos alternativos de movimento reduzido
   function setupReducedMotionEffects() {
     cameraFeeds.forEach((feed) => {
       const noiseOverlay = feed.querySelector(".noise-overlay");
       noiseOverlay.style.opacity = 0.02;
 
-      // Add subtle visual indicators instead of animations
+      // Adicione indicadores visuais sutis em vez de animações
       feed.querySelector(".camera-content").style.border =
         "1px solid rgba(33, 150, 243, 0.3)";
     });
   }
 
-  // Toggle fullscreen for a camera when clicked
+  // Alternar tela cheia para uma câmera quando clicado
   cameraFeeds.forEach((feed) => {
     feed.addEventListener("click", () => {
-      // If already fullscreen, revert back
+      // Se já estiver em tela cheia, reverter
       if (feed.classList.contains("fullscreen")) {
         feed.classList.remove("fullscreen");
         document.body.style.overflow = "auto";
       } else {
-        // Remove fullscreen from any other feed
+        // Remover tela cheia de qualquer outro feed
         document.querySelectorAll(".camera-feed.fullscreen").forEach((f) => {
           f.classList.remove("fullscreen");
         });
 
-        // Make this feed fullscreen
+        // Tornar este feed em tela cheia
         feed.classList.add("fullscreen");
         document.body.style.overflow = "hidden";
 
-        // Log the action
+        // Registra a ação
         const cameraId = feed.querySelector(".camera-id").textContent;
         logEvent(`EXPANDED VIEW: ${cameraId}`);
       }
     });
   });
 
-  // Toggle grid layout
+  // Alternar layout da grade
   toggleGridBtn.addEventListener("click", () => {
     switch (gridState) {
       case "three-per-row":
@@ -579,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Toggle color/BW filter
+  // Alternar filtro de cor / P&B
   toggleFilterBtn.addEventListener("click", () => {
     isColorMode = !isColorMode;
 
@@ -596,41 +596,41 @@ document.addEventListener("DOMContentLoaded", () => {
     logEvent(`SWITCHED TO ${isColorMode ? "COLOR" : "MONOCHROME"} MODE`);
   });
 
-  // Reset system button
+  //Botão de reinicialização do sistema
   resetSystemBtn.addEventListener("click", () => {
     document.querySelector(".status-alert").textContent = "REBOOTING";
     logEvent("SYSTEM RESET INITIATED");
 
-    // Apply visual reboot effect
+    // Aplicar efeito de reinicialização visual
     document.querySelectorAll(".camera-content").forEach((content) => {
       content.style.opacity = 0.2;
     });
 
-    // Simulate system reboot
+    // Simular reinicialização do sistema
     setTimeout(() => {
       logEvent("CLEARING MEMORY BUFFER...");
       setTimeout(() => {
         logEvent("RESTARTING CAMERA MODULES...");
         setTimeout(() => {
-          // Restore camera feeds
+          // Restaurar feeds de câmera
           document.querySelectorAll(".camera-content").forEach((content) => {
             content.style.opacity = 1;
           });
 
-          // Reset videos
+          //Redefinir vídeos
           videoElements.forEach((video) => {
             video.currentTime = 0;
             video.play().catch((e) => console.error("Video restart error:", e));
           });
 
-          // Randomize scanlines again
+          // Randomizar linhas de varredura novamente
           randomizeScanLines();
 
-          // Update system status
+          //Atualiza o status do sistema
           document.querySelector(".status-alert").textContent = "ONLINE";
           logEvent("SYSTEM SUCCESSFULLY REBOOTED");
 
-          // Trigger a few random glitches to simulate system instability after reboot
+          // Aciona algumas falhas aleatórias para simular instabilidade do sistema após a reinicialização
           setTimeout(() => {
             if (!prefersReducedMotion) {
               cameraFeeds.forEach((feed) => {
@@ -654,12 +654,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   });
 
-  // Force glitch button
+  // Botão de forçar falha
   triggerGlitchBtn.addEventListener("click", () => {
     logEvent("WARNING: MANUAL INTERFERENCE DETECTED");
 
     if (prefersReducedMotion) {
-      // Alternative feedback for reduced motion
+      // Feedback alternativo para movimento reduzido
       document.querySelectorAll(".camera-content").forEach((content) => {
         content.style.borderColor = "var(--error-color)";
         setTimeout(() => {
@@ -669,41 +669,41 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Apply simultaneous glitches to all cameras
+    // Aplicar falhas simultâneas a todas as câmeras
     cameraFeeds.forEach((feed) => {
       const glitchOverlay = feed.querySelector(".glitch-overlay");
       const colorDistortion = feed.querySelector(".color-distortion");
       const video = feed.querySelector(".camera-video");
 
-      // Create more severe glitch for this manual trigger
-      // Random horizontal and vertical displacement
+      // Cria uma falha mais grave para este gatilho manual
+      // Deslocamento horizontal e vertical aleatório
       video.style.transform = `translate(${Math.random() * 10 - 5}px, ${
         Math.random() * 10 - 5
       }px)`;
 
-      // Color channel split
+      // Divisão de canal de cores
       video.style.boxShadow = `${
         Math.random() * 8 - 4
       }px 0 0 rgba(255,0,0,0.5), ${
         Math.random() * -8 + 4
       }px 0 0 rgba(0,255,255,0.5)`;
 
-      // Increase static
+      // Aumenta a estática
       feed.querySelector(".noise-overlay").style.opacity = 0.3;
 
-      // Add color tint
+      // Adicionar matiz de cor
       colorDistortion.style.opacity = 0.4;
       colorDistortion.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
       colorDistortion.style.mixBlendMode = "hard-light";
 
-      // Reset after a short delay
+      // Redefinir após um pequeno atraso
       setTimeout(() => {
         video.style.transform = "none";
         video.style.boxShadow = "none";
         feed.querySelector(".noise-overlay").style.opacity = 0.03;
         colorDistortion.style.opacity = 0;
 
-        // Sometimes add a secondary glitch
+        // Às vezes, adicione uma falha secundária
         if (Math.random() < 0.5) {
           setTimeout(() => {
             applyRandomGlitch(feed, video, glitchOverlay, colorDistortion);
@@ -712,13 +712,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 800);
     });
 
-    // Add system response to manual glitch
+    // Adicionar resposta do sistema à falha manual
     setTimeout(() => {
       logEvent("SYSTEM ATTEMPTING TO STABILIZE SIGNAL...");
     }, 1200);
   });
 
-  // Handle escape key to exit fullscreen
+  // Manipule a tecla escape para sair da tela cheia
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       const fullscreenCamera = document.querySelector(
@@ -731,6 +731,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Initialize the system
+  // Inicializa o sistema
   initializeSystem();
 });
