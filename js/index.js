@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // After uploading videos to CodePen, replace these with your actual asset URLs
   const videoSources = [
     "./video/cam1.mp4", 
-    "https://mattcannon.games/codepen/glitches/cam2.mp4",
-    "https://mattcannon.games/codepen/glitches/cam3.mp4",
-    "https://mattcannon.games/codepen/glitches/cam4.mp4",
-    "https://mattcannon.games/codepen/glitches/cam5.mp4",
+    "./video/cam2.mp4",
+    "./video/cam3.mp4",
+    "./video/cam4.mp4",
+    "./video/cam5.mp4",
     "https://mattcannon.games/codepen/glitches/cam6.mp4"
   ];
 
