@@ -121,7 +121,7 @@ body {
 
 .camera-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--grid-gap);
 }
 
@@ -400,7 +400,7 @@ body {
 
 /* Grid size controls */
 .camera-grid.three-per-row {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .camera-grid.two-per-row {

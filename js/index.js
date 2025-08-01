@@ -24,10 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "./video/cam4.mp4",
     "./video/cam5.mp4",
     "./video/cam5.mp4",
+    "./video/cam5.mp4",
+    "./video/cam5.mp4",
   ];
 
 // Estado de exibição atual e estado do filtro
-  let gridState = "three-per-row";// 'três por linha', 'dois por linha', 'coluna única'
+  let gridState = "four-per-row"; // 'quatro por linha', 'dois por linha', 'coluna única'
   let isColorMode = true;
 
 // Inicializar e configurar feeds de câmera
@@ -553,31 +555,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Alternar layout da grade
   toggleGridBtn.addEventListener("click", () => {
-    switch (gridState) {
-      case "three-per-row":
-        cameraGrid.classList.remove("three-per-row");
-        cameraGrid.classList.add("two-per-row");
-        gridState = "two-per-row";
-        toggleGridBtn.textContent = "2x GRID";
-        logEvent("SWITCHED TO 2x3 GRID VIEW");
-        break;
-      case "two-per-row":
-        cameraGrid.classList.remove("two-per-row");
-        cameraGrid.classList.add("single-column");
-        gridState = "single-column";
-        toggleGridBtn.textContent = "1x GRID";
-        logEvent("SWITCHED TO SINGLE COLUMN VIEW");
-        break;
-      case "single-column":
-        cameraGrid.classList.remove("single-column");
-        cameraGrid.classList.add("three-per-row");
-        gridState = "three-per-row";
-        toggleGridBtn.textContent = "3x GRID";
-        logEvent("SWITCHED TO 3x2 GRID VIEW");
-        break;
-    }
-  });
-
+  switch (gridState) {
+    case "four-per-row":
+      cameraGrid.classList.remove("four-per-row");
+      cameraGrid.classList.add("two-per-row");
+      gridState = "two-per-row";
+      toggleGridBtn.textContent = "2x GRID";
+      logEvent("SWITCHED TO 2x4 GRID VIEW");
+      break;
+    case "two-per-row":
+      cameraGrid.classList.remove("two-per-row");
+      cameraGrid.classList.add("single-column");
+      gridState = "single-column";
+      toggleGridBtn.textContent = "1x GRID";
+      logEvent("SWITCHED TO SINGLE COLUMN VIEW");
+      break;
+    case "single-column":
+      cameraGrid.classList.remove("single-column");
+      cameraGrid.classList.add("four-per-row");
+      gridState = "four-per-row";
+      toggleGridBtn.textContent = "4x GRID";
+      logEvent("SWITCHED TO 4x2 GRID VIEW");
+      break;
+  }
+});
   // Alternar filtro de cor / P&B
   toggleFilterBtn.addEventListener("click", () => {
     isColorMode = !isColorMode;
