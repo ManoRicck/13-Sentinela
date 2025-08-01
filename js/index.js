@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const videoElements = document.querySelectorAll(".camera-video");
   const scanLines = document.querySelectorAll(".scan-line");
 
-// Depois de enviar os vídeos para o CodePen, substitua-os pelos URLs reais dos seus ativos
   const videoSources = [
     "./video/cam1.mp4", 
     "./video/cam2.mp4",

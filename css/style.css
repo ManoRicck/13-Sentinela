@@ -1,13 +1,4 @@
 :root {
-   --title: "Glitchy Surveillance UI";
-   --author: "Matt Cannon";
-   --contact: "mc@mattcannon.design";
-   --description: "A responsive, interactive security camera monitoring system with dynamic neon glitch effects, system logging, and real-time feed interference. Features offline cameras, color/monochrome toggling, and grid layout options.";
-   --keywords: "surveillance, security cameras, glitch effects, CCTV, monitoring system, cyberpunk, neon glitches, system log, RGB split, interactive controls, responsive design, feed interference, matrix effects, camera grid, real-time logging";
-   --last-modified: "2025-03-19";
-   --content-language: "en";
-   --generator: "HTML5, CSS3, JavaScript, dynamic glitch effects, real-time event logging, responsive grid layouts, video manipulation, neon color effects, scanline animations, RGB channel splitting, customizable viewing modes";
-
   --primary-bg: #0e0e12;
   --feed-bg: #121218;
   --accent-color: #2196f3;
