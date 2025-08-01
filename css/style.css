@@ -1,7 +1,7 @@
 :root {
   --primary-bg: #0e0e12;
   --feed-bg: #121218;
-  --accent-color: #2196f3;
+  --accent-color: #cccccc;
   --error-color: #f44336;
   --success-color: #4caf50;
   --text-color: #e0e0e0;
@@ -243,7 +243,7 @@ body {
 .log-terminal {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(33, 150, 243, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   height: 148px; 
   display: flex;
   flex-direction: column;
@@ -271,9 +271,9 @@ body {
 
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #2196f3 #1a1a1a;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra interna para profundidade */
-  flex-grow: 1; /* Preenche o espaço restante em containers flex */
+  scrollbar-color: #cccccc #1a1a1a;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  flex-grow: 1;
 }
 
 .terminal-content::-webkit-scrollbar {
