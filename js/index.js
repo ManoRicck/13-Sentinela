@@ -28,6 +28,36 @@ document.addEventListener("DOMContentLoaded", () => {
     "./video/cam5.mp4",
   ];
 
+  let uptimeSeconds = 0;
+  
+  function updateUptime() {
+    uptimeSeconds++;
+    const hours = Math.floor(uptimeSeconds / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = uptimeSeconds % 60;
+    
+    uptimeDisplay.textContent = 
+      `${hours.toString().padStart(2, '0')}:` +
+      `${minutes.toString().padStart(2, '0')}:` +
+      `${seconds.toString().padStart(2, '0')}`;
+  }
+
+  updateUptime();
+  const uptimeInterval = setInterval(updateUptime, 1000);
+  
+  // No botão de reset, adicione para resetar o uptime também:
+  resetSystemBtn.addEventListener("click", () => {
+    // [Seu código existente de reset...]
+    
+    // Resetar o contador de uptime
+    clearInterval(uptimeInterval);
+    uptimeSeconds = 0;
+    updateUptime();
+    uptimeInterval = setInterval(updateUptime, 1000);
+    
+    // [Restante do seu código de reset...]
+  });
+
 // Estado de exibição atual e estado do filtro
   let gridState = "four-per-row"; // 'quatro por linha', 'dois por linha', 'coluna única'
   let isColorMode = true;
@@ -668,6 +698,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return;
     }
+
+    
 
     // Aplicar falhas simultâneas a todas as câmeras
     cameraFeeds.forEach((feed) => {
