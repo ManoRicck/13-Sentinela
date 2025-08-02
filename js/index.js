@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "./video/cam3.mp4",
     "./video/cam4.mp4",
     "./video/cam5.mp4",
-    "./video/cam5.mp4",
-    "./video/cam5.mp4",
-    "./video/cam5.mp4",
+    "./video/cam6.mp4",
+    "./video/cam7.mp4",
+    "./video/cam8.mp4",
   ];
 
   let uptimeSeconds = 0;
