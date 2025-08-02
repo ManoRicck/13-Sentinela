@@ -6,6 +6,7 @@
 <h1 align="center">
 
   Sentinela - Comabte de anomalias 
+  
 </h1>  
 
 <div align="center">  
@@ -26,15 +27,27 @@
 
 </div>  
 
----  
+<br>
 
-## 🌟 Visão Geral  
+## ⚠ALERTA DE FALHA GERAL
 
-Este projeto apresenta um carrossel interativo com os Hashiras, os poderosos pilares do universo de Kimetsu no Yaiba (Demon Slayer). Cada slide destaca um personagem com imagem e nome, permitindo que o usuário explore todos os Hashiras de forma visual e dinâmica.
+A Sentinela está sob ataque. Nossos sistemas de contenção apresentam anomalias críticas (CAR_01 a CAR_68), com valores fora dos parâmetros aceitáveis. Se você está lendo esta mensagem, o protocolo de emergência foi ativado.
+
+A Sentinela é a última linha de defesa contra entidades, fenômenos e sistemas que desafiam as leis da realidade. Operamos na sombra, mas nossa queda é sua ameaça.
+
+O QUE ESTÁ ACONTECENDO?
+
+Sistema Corrompido: Dados de vigilância (V100) mostram padrões anômalos em cascata (veja [CAM_01] a [CAM_06]).
+
+Contenção Frágil: Todos os "CAR" (Cápturas de Anomalias Registradas) estão com integridade comprometida.
+
+Você Pode Ajudar: Reporte avistamentos, acesse logs censurados ou ative protocolos de backup.
+
+🔒 MISSÃO ATUAL: RESTAURAR O SISTEMA ANTES QUE AS ANOMALIAS SE MANIFESTEM.**
 
 <br>
 
-Hashiras:  
+Sentinela:  
 - 🖼️ **Cameras pela casa**
 - 🔍 **terminal de eventos** 
 - 💡 **efeitos de camera**
@@ -49,6 +62,7 @@ Hashiras:
 │   ├── css/
 │   ├── img/
 │   ├── js/
+│   ├── videos/
 │   ├── index.html
 │   └── README.md
 
@@ -59,7 +73,7 @@ Hashiras:
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/ManoRicck/05-Kimetsu_no_yaiba_Hashiras.git
+git clone https://github.com/ManoRicck/13-Sentinela.git
 ```
 2. Execute o arquivo html:
 ```bash
