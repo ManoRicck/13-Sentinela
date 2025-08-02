@@ -47,7 +47,7 @@ Você Pode Ajudar: Reporte avistamentos, acesse logs censurados ou ative protoco
 
 <br>
 
-Sentinela:  
+### Sentinela:  
 - 🖼️ **Cameras pela casa**
 - 🔍 **terminal de eventos** 
 - 💡 **efeitos de camera**
