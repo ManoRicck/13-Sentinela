@@ -135,7 +135,7 @@ body {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  height: 190px;
+  height: 200px;
 }
 
 .camera-feed:hover {
