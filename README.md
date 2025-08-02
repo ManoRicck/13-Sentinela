@@ -43,12 +43,10 @@ O QUE ESTÁ ACONTECENDO?
 
 - Você Pode Ajudar: Reporte avistamentos, acesse logs censurados ou ative protocolos de backup.
 <br>
-🔒 MISSÃO ATUAL: RESTAURAR O SISTEMA ANTES QUE AS ANOMALIAS SE MANIFESTEM.
+
+#### MISSÃO ATUAL: RESTAURAR O SISTEMA ANTES QUE AS ANOMALIAS SE MANIFESTEM.
 
 <br>
-
-
----  
 
 
 ## 📦 Estrutura do Projeto  
