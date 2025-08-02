@@ -5,7 +5,7 @@
 </div>
 <h1 align="center">
 
-  Sentinela - Comabte de anomalias 
+  Sentinela - Combate de anomalias 
   
 </h1>  
 
@@ -37,20 +37,16 @@ A Sentinela é a última linha de defesa contra entidades, fenômenos e sistemas
 
 O QUE ESTÁ ACONTECENDO?
 
-Sistema Corrompido: Dados de vigilância (V100) mostram padrões anômalos em cascata (veja [CAM_01] a [CAM_06]).
+- Sistema Corrompido: Dados de vigilância (V100) mostram padrões anômalos em cascata (veja [CAM_01] a [CAM_06]).
 
-Contenção Frágil: Todos os "CAR" (Cápturas de Anomalias Registradas) estão com integridade comprometida.
+- Contenção Frágil: Todos os "CAR" (Cápturas de Anomalias Registradas) estão com integridade comprometida.
 
-Você Pode Ajudar: Reporte avistamentos, acesse logs censurados ou ative protocolos de backup.
-
-🔒 MISSÃO ATUAL: RESTAURAR O SISTEMA ANTES QUE AS ANOMALIAS SE MANIFESTEM.**
+- Você Pode Ajudar: Reporte avistamentos, acesse logs censurados ou ative protocolos de backup.
+<br>
+🔒 MISSÃO ATUAL: RESTAURAR O SISTEMA ANTES QUE AS ANOMALIAS SE MANIFESTEM.
 
 <br>
 
-### Sentinela:  
-- 🖼️ **Cameras pela casa**
-- 🔍 **terminal de eventos** 
-- 💡 **efeitos de camera**
 
 ---  
 
