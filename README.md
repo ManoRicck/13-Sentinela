@@ -58,7 +58,7 @@ O QUE ESTÁ ACONTECENDO?
 │   ├── js/
 │   ├── videos/
 │   ├── index.html
-│   └── README.md
+└─  └── README.md
 
 ```
 
